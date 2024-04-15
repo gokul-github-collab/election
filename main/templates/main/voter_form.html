@@ -9,10 +9,12 @@
         <h5 class="text-center" style="color: #fff;" >Voter Registration Form</h5>
       </div>
       <div class="card-body " style="background-color: #3f4156;" >
-<form method="post">
+<form method="post" enctype="multipart/form-data" >
   {% csrf_token %}
   <label style="color: #fff;"for="name">Name:</label>
   <input   class="form-control"  type="text" id="name" name="name" required><br>
+  <label style="color: #fff;"for="image">Image:</label>
+  <input   class="form-control"  type="file" id="image" name="image" required><br>
 
   <label style="color: #fff;"for="fname">Father's Name:</label>
   <input   class="form-control"  type="text" id="fname" name="fname" required><br>

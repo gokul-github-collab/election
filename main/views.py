@@ -137,6 +137,7 @@ def create_voter(request):
         district = request.POST.get('district')
         pincode = request.POST.get('pincode')
         aadhar = request.POST.get('aadhar')
+        image = request.FILES.get('image')
 
         try:
             age = int(age)
@@ -159,7 +160,8 @@ def create_voter(request):
                 district=district,
                 pincode=pincode,
                 aadhar=aadhar,
-                vote = generate_random_vote()
+                vote = generate_random_vote(),
+                image = image
             )
             return redirect('home')
         except Exception as e:
