@@ -1,0 +1,148 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block title %}
+
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 mt-2">
+                <h6 class="text-center" style="font-weight: 500; color: #fff;">BROWSE SERVICES</h6>
+                <div class="card" style="background-color: #3f4156;">
+
+                    <div class="card-body" >
+                        <div class="row">
+                            <div class="col" style="color: #fff;">
+                                ALL
+                            </div>
+                            <div class="col text-right">
+                                <span style="color: #fff;" class="badge text-bg-secondary">{{ services.all.count }}</span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% include 'main/services_component.html' %}
+                <div class="card p-2 mt-4" style="background-color: #3f4156;">
+                    <div class="card-header" style="background-color: #696d97;">
+                       <h6 class="text-center" style="font-weight: 500; color: #fff;">CURRENT ISSUES</h6>
+                    </div>
+
+                    {% include 'main/ci.html' %}
+                </div>
+
+            </div>
+
+            <div class="col-lg-6 col-md-6 mt-5">
+                <a class="btn btn-outline-secondary mb-3" style="color: #fff; color:#fff"  href="{% url 'voter_form' %}">Register Now To Vote</a>
+                <a class="btn btn-outline-secondary mb-3" style="color: #fff; color:#fff"  href="">New Party Registration</a>
+
+                <a class="btn btn-outline-secondary mb-3" style="color: #fff; color:#fff"  href="">Handbooks / Manuals</a>
+                        <div id="carouselExampleIndicators" class="carousel slide">
+                      <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                      </div>
+                      <div class="carousel-inner">
+                        <div class="carousel-item active">
+                          <img src="{% static 'images/dr.jpg' %}" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                          <img src="{% static 'images/drou.jpg' %}" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                          <img src="{% static 'images/lok.jpg' %}" class="d-block w-100" alt="...">
+                        </div>
+                          <div class="carousel-item">
+                          <img src="{% static 'images/meet.jpg' %}" class="d-block w-100" alt="...">
+                        </div>
+                      </div>
+                      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                      </button>
+                      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                      </button>
+                    </div>
+
+
+                    <div class="card mb-3 mt-3 " style="background-color: #3f4156;" >
+                      <div class="row g-0" style="background-color: #3f4156;">
+                        <div class="col-md-4" style="background-color:#3f4156;">
+                          <img src="{% static 'images/sachin-01.png' %}" class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                          <div class="card-body" style="background-color: #3f4156;" >
+                            <h5 class="card-title" style="font-family: 'Ubuntu', sans-serif; font-weight: bold; color: white " >SVEEP</h5>
+                            <p class="card-text" style="color: #ffffff" >Systematic Voters' Education and Electoral Participation program, better known as
+SVEEP, is the flagship program of the Election Commission of India for voter
+education, spreading voter awareness and promoting voter literacy in India. Since
+2009, we have been working towards preparing India's electors and equipping them
+with basic knowledge related to the electoral process.</p>
+<!--                            <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>-->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                <div class="card mb-3 mt-3 " style="background-color: #3f4156;" >
+                      <div class="row g-0" style="background-color: #3f4156;">
+                        <div class="col-md-4" style="background-color:#3f4156;">
+                          <img src="{% static 'images/ppl.png' %}" class="img-fluid rounded-start mt-5 p-1 " alt="...">
+                        </div>
+                        <div class="col-md-8">
+                          <div class="card-body" style="background-color: #3f4156;" >
+                            <h5 class="card-title" style="font-family: 'Ubuntu', sans-serif; font-weight: bold; color: white " >India International Institute of Democracy and Election Management</h5>
+                            <p class="card-text" style="color: #ffffff" >The Election Commission of India (ECI), established the India International Institute of Democracy and Election Management (IIIDEM) to advance its professional competence in election management, promote peoples participation, contribute to developing stronger democratic institutions and support the efforts of ECI in carrying out its mandate and functions.</p>
+<!--                            <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>-->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+            </div>
+
+
+            <div class="col-lg-3 col-md-3 mt-2">
+                <div class="card p-2" style="background-color: #3f4156;">
+                    <div class="card-header" style="background-color: #696d97;">
+                       <h6 class="text-center" style="font-weight: 500; color: #fff;" >ELECTION STORIES</h6>
+                    </div>
+                    {% include 'main/election_stories_component.html' %}
+
+                </div>
+                <div class="card p-2 mt-1" style="background-color: #3f4156;">
+                    <div class="card-header" style="background-color: #696d97;">
+                       <h6 class="text-center" style="font-weight: 500; color: #fff;" >TENDER AND VACANCIES</h6>
+                    </div>
+
+                    {% include 'main/tender_component.html' %}
+                </div>
+            </div>
+        </div>
+        </div>
+</div>
+<div class="container">
+
+                <div class="card mb-3 mt-3 " style="background-color: #3f4156;" >
+                      <div class="row g-0" style="background-color: #3f4156;">
+
+                        <div class="col-md-8">
+                          <div class="card-body" style="background-color: #3f4156;" >
+                            <h5 class="card-title" style="font-family: 'Ubuntu', sans-serif; font-weight: bold; color: white " >Autonomous Constitutional Authority</h5>
+                            <p class="card-text" style="color: #ffffff" >The Election Commission of India is an autonomous constitutional authority responsible for administering election processes in India. The body administers elections to the Lok Sabha, Rajya Sabha, State Legislative Assemblies in India, and the offices of the President and Vice President in the country.</p>
+<!--                            <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>-->
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-footer text-muted" style="background-color: #3f4156; color: white" >
+      <p style="color: white" >© Nirvachan Sadan, Ashoka Road, New Delhi 110001</p>
+  </div>
+                    </div>
+</div>
+
+
+{% endblock %}

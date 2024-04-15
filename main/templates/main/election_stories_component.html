@@ -1,0 +1,17 @@
+{% for election in elections %}
+
+<div class="card mt-2 mb-2 " style="background-color: #3f4156;">
+  <div class="card-body ">
+<!--      <h6 class="card-title" style="color: #fff;"><img src="{{ message.user.avatar.url}}" style=" width: 40px; height: 40px; " class="rounded me-2" alt="..."> Host <a href=" style="color: #71c6dd;">@{{ message.user.username }}</a></h6>-->
+      <p style="color: #fff;" >{{ election.created_at | timesince }} ago</p>
+      <p class="card-text" style="color: #fff;">"<a href="" style="color: #71c6dd; text-decoration: none; ">{{ election.name | slice:":22" }}{%  if election.name|length > 20 %}...{% endif %}</a>"</p>
+      <div class="card" style="background-color: #2d2d39; color:#2d2d39;">
+        <div class="card-body" style="background-color: #2d2d39;">
+          <span style="color: #fff">{{ election.description|slice:":20" }}{% if election.description|length > 20 %}...{% endif %}</span>
+        </div>
+      </div>
+  </div>
+</div>
+
+
+{% endfor %}

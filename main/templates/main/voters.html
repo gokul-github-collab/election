@@ -1,0 +1,131 @@
+{% extends 'main.html' %}
+
+{% block content %}
+</br>
+    <div class="container">
+
+        <div class="card bg-light border-secondary p-3 m-2">
+            <div class="card-body">
+                <h1 class="card-title"><a href="{% url 'voters' %}" style="text-decoration: none; color: #000" >VOTERS LIST</a></h1>
+                Find details of eligible voters residing in various localities, sorted by gender and age.
+            </div>
+        </div>
+    </br>
+        <form id="search-form" method="GET" >
+            <div class="form-floating">
+                <div class="row">
+
+                    <div class="col-3">
+
+<input list="browsers" class="form-control" placeholder="Enter Locality" name="locality">
+                    <datalist id="browsers">
+                        {% for voter in unique_localities %}
+                            <option value="{{ voter }}">{{ voter }}</option>
+                        {% endfor %}
+                    </datalist>
+
+                    </div>
+                                        <div class="col-3">
+
+<input list="browsers" class="form-control" placeholder="Enter District" name="district">
+                    <datalist id="district">
+                        {% for voter in unique_district %}
+                            <option value="{{ voter }}">{{ voter }}</option>
+                        {% endfor %}
+                    </datalist>
+
+                    </div>
+                    <div class="col-3">
+        <input list="gender_list" class="form-control" placeholder="Select Gender" name="gender">
+<datalist id="gender_list">
+    {% for gender in unique_genders %}
+        <option value="{{ gender }}">{{ gender }}</option>
+    {% endfor %}
+</datalist>
+                    </div>
+                    <div class="col-3">
+<div class="form-group row text-white">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-10">
+    <input type="number" class="form-control" id="age" name="age" placeholder="Enter Age">
+  </div>
+</div>
+<div class="form-group row text-white">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-10">
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="age_filter" id="age_above" value="above">
+      <label class="form-check-label text-white" for="age_above">Above</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="age_filter" id="age_below" value="below">
+      <label class="form-check-label text-white" for="age_below">Below</label>
+    </div>
+  </div>
+</div>
+
+
+                    </div>
+                </div>
+            </div>
+        </br>
+            <button class="btn btn-outline-secondary" style="color: white;" data-bs-toggle="collapse" data-bs-target="#result-row" aria-expanded="true" aria-controls="result-row" type="submit">Submit</button>
+        </form>
+        </br>
+
+        <div class="row gx-3 gy-3 collapse show" id="result-row">
+<div class="col">
+    <h3 class="bg-teal text-light border-teal rounded-5 p-3 m-2">Results Found</h3>
+
+    <div class="card  border-secondary rounded-5 shadow p-3 m-2 " style="background-color: #696d97" >
+        <div class="row">
+            <div class="col-md-4">
+                <h5 class="card-title " style="color: white;" >Voters</h5>
+            </div>
+            <div class="col-md-2 text-center">
+                <h5 class="card-title" style="color: white;">Eligible</h5>
+            </div>
+            <div class="col-md-2 text-center">
+                <h5 class="card-title"style="color: white;">Locality</h5>
+            </div>
+            <div class="col-md-2 text-center">
+                <h5 class="card-title"style="color: white;">Age</h5>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+
+        <hr class="m-0">
+
+        <div class="list-group list-group-flush" style="background-color: #3f4156;">
+    {% for voter in page_obj %}
+    <div class="list-group-item d-flex justify-content-between align-items-center" style="background-color: #3f4156;">
+        <a href="{% url 'voter-profile' voter.aadhar %}" style="color: #71c6dd;" class=" text-decoration-none">
+            {{ voter.name }}
+        </a>
+        <span style="color: #71c6dd;">{{ voter.vote }}</span>
+        <span style="color: #71c6dd;">{{ voter.locality }}</span>
+        <span style="color: #71c6dd;">{{ voter.age }}</span>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="pagination justify-content-center mt-3">
+    {% if page_obj.has_previous %}
+        <a class="btn btn-outline-secondary" style="color: white;" href="?page=1">&laquo; First</a>
+        <a class="btn btn-outline-secondary"style="color: white;" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+    {% endif %}
+
+    <span class="mx-2">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+
+    {% if page_obj.has_next %}
+        <a class="btn btn-outline-secondary" style="color: white;" href="?page={{ page_obj.next_page_number }}">Next</a>
+        <a class="btn btn-outline-secondary" style="color: white;" href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
+    {% endif %}
+</div>
+
+    </div>
+</div>
+
+
+    </div>
+{% endblock %}

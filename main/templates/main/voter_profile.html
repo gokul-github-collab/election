@@ -1,0 +1,119 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block title %}
+
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 mt-2">
+                <h6 class="text-center" style="font-weight: 500; color: #fff;">BROWSE SERVICES</h6>
+                <div class="card" style="background-color: #3f4156;">
+
+                    <div class="card-body" >
+                        <div class="row">
+                            <div class="col" style="color: #fff;">
+                                ALL
+                            </div>
+                            <div class="col text-right">
+                                <span style="color: #fff;" class="badge text-bg-secondary">{{ services.all.count }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% include 'main/services_component.html' %}
+                <div class="card p-2 mt-4" style="background-color: #3f4156;">
+                    <div class="card-header" style="background-color: #696d97;">
+                       <h6 class="text-center" style="font-weight: 500; color: #fff;">CURRENT ISSUES</h6>
+                    </div>
+
+                    {% include 'main/ci.html' %}
+                </div>
+
+            </div>
+
+            <div class="col-lg-6 col-md-6 mt-5">
+<div class="text-center">
+
+                <img src="{{ voter.image.url }}" style="max-width: 150px; max-height: 150px;"  class="img-thumbnail" alt="Circle Image">
+
+                <h5 style="color: #fff;">{{ voter.name }}</h5>
+                {% if request.user == voter %}
+                    <a href=""  style="color:#fff" class="btn btn-outline-secondary">Edit Profile</a>
+                {% endif %}
+            </div>
+
+            <div>
+                <div class="card border-primary mb-3" style="background-color: #3f4156;" >
+                  <div class="card-header  text-white" style="background-color: #696d97;" >Voter Profile</div>
+                  <div class="card-body" style="background-color: #3f4156;">
+                    <h5 class="card-title" style="background-color: #3f4156; color: white;" >VOTER ID: {{ voter.vote | upper }}</h5>
+                    <ul class="list-group list-group-flush"style="background-color: #3f4156; color: white;">
+                      <li class="list-group-item"style="background-color: #3f4156; color: white;">Father's Name: {{ voter.fname }}</li>
+                      <li class="list-group-item"style="background-color: #3f4156; color: white;">Mother's Name: {{ voter.mname }}</li>
+                      <li class="list-group-item"style="background-color: #3f4156; color: white;">Gender: {{ voter.gender }}</li>
+                      <li class="list-group-item"style="background-color: #3f4156; color: white;">Place of Birth: {{ voter.pob }}</li>
+                      <li class="list-group-item"style="background-color: #3f4156; color: white;">Age: {{ voter.age }}</li>
+                      <li class="list-group-item"style="background-color: #3f4156; color: white;">Address:
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item"style="background-color: #3f4156; color: white;">House Number: {{ voter.house_no }}</li>
+                          <li class="list-group-item"style="background-color: #3f4156; color: white;">Flat Name: {{ voter.flat_name }}</li>
+                          <li class="list-group-item"style="background-color: #3f4156; color: white;">Locality: {{ voter.locality }}</li>
+                        </ul>
+                      </li>
+                      <li class="list-group-item"style="background-color: #3f4156; color: white;">District: {{ voter.district }}</li>
+                      <li class="list-group-item"style="background-color: #3f4156; color: white;">Pincode: {{ voter.pincode }}</li>
+                      <li class="list-group-item"style="background-color: #3f4156; color: white;">Aadhar Number: {{ voter.aadhar }}</li>
+                      <li class="list-group-item text-right"style="background-color: #3f4156; color: white;">Eligible to Vote: {% if voter.vote %}Yes{% else %}No{% endif %}</li>
+                    </ul>
+                  </div>
+                </div>
+
+
+
+            </div>
+            </div>
+
+
+            <div class="col-lg-3 col-md-3 mt-2">
+                <div class="card p-2" style="background-color: #3f4156;">
+                    <div class="card-header" style="background-color: #696d97;">
+                       <h6 class="text-center" style="font-weight: 500; color: #fff;" >ELECTION STORIES</h6>
+                    </div>
+                    {% include 'main/election_stories_component.html' %}
+
+                </div>
+                <div class="card p-2 mt-1" style="background-color: #3f4156;">
+                    <div class="card-header" style="background-color: #696d97;">
+                       <h6 class="text-center" style="font-weight: 500; color: #fff;" >TENDER AND VACANCIES</h6>
+                    </div>
+
+                    {% include 'main/tender_component.html' %}
+                </div>
+            </div>
+        </div>
+        </div>
+</div>
+<div class="container">
+
+                <div class="card mb-3 mt-3 " style="background-color: #3f4156;" >
+                      <div class="row g-0" style="background-color: #3f4156;">
+
+                        <div class="col-md-8">
+                          <div class="card-body" style="background-color: #3f4156;" >
+                            <h5 class="card-title" style="font-family: 'Ubuntu', sans-serif; font-weight: bold; color: white " >Autonomous Constitutional Authority</h5>
+                            <p class="card-text" style="color: #ffffff" >The Election Commission of India is an autonomous constitutional authority responsible for administering election processes in India. The body administers elections to the Lok Sabha, Rajya Sabha, State Legislative Assemblies in India, and the offices of the President and Vice President in the country.</p>
+<!--                            <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>-->
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-footer text-muted" style="background-color: #3f4156; color: white" >
+      <p style="color: white" >© Nirvachan Sadan, Ashoka Road, New Delhi 110001</p>
+  </div>
+                    </div>
+</div>
+
+
+{% endblock %}

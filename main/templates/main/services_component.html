@@ -1,0 +1,10 @@
+{% for service in services %}
+
+<div class="card mt-2" style="background-color: #3f4156;">
+    <div class="card-body">
+
+         <a href="{% url 'home' %}?q={{ service.name }}" style="color: #71c6dd; text-decoration: none ">{{ service.name }}</a>
+        </div>
+    </div>
+
+{% endfor %}
